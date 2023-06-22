@@ -8,15 +8,9 @@ let form=document.querySelector("form");
 function validateinput(){
     //check username is empty
     if(userName.value.trim()===""){
-       let parent=userName.parentElement;
-       let messageEle=parent.querySelector("small");
-       messageEle.style.visibility="visible";
-       messageEle.innerText="User Name cannot be empty";
+        onError(userName, "User Name cannot be empty");
     }else{
-        let parent=userName.parentElement;
-       let messageEle=parent.querySelector("small");
-       messageEle.style.visibility="hidden";
-       messageEle.innerText="";
+        onSuccess(userName);
     }
 }
 
@@ -26,9 +20,17 @@ document.querySelector("button")
     validateinput();
 });
 
-function  onSuccess(input,message){
-
+function  onSuccess(input){
+    let parent=input.parentElement;
+    let messageEle=parent.querySelector("small");
+    messageEle.style.visibility="hidden";
+    messageEle.innerText="";
+    parent.classlist.remove("error");
+    parent.classlist.add("success");
 }
 function  onError(input,message){
-    
+    let parent=userName.parentElement;
+    let messageEle=parent.querySelector("small");
+    messageEle.style.visibility="visible";
+    messageEle.innerText="User Name cannot be empty";   
 }
