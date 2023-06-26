@@ -12,6 +12,11 @@ function validateinput(){
     }else{
         onSuccess(userName);
     }
+    if(email.value.trim()===""){
+        onError(username,"Email cannot be empty");
+    }else{
+        if()
+    }
 }
 
 document.querySelector("button")
@@ -32,5 +37,11 @@ function  onError(input,message){
     let parent=userName.parentElement;
     let messageEle=parent.querySelector("small");
     messageEle.style.visibility="visible";
-    messageEle.innerText="User Name cannot be empty";   
+    messageEle.innerText="User Name cannot be empty";
+    parent.classlist.add("error");
+    parent.classlist.remove("success"); 
+}
+
+function isValidEmail(){
+    /^(([^<>[\]\\.,;:\s@"])+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[0-9]{1,3}\.[0.9{1.3}])))
 }
