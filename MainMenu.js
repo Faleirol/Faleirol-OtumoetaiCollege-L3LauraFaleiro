@@ -15,7 +15,11 @@ function validateinput(){
     if(email.value.trim()===""){
         onError(username,"Email cannot be empty");
     }else{
-        if()
+        if(pwd.value.trim()!==conPwd.value.trim()){
+            onError(conPwd,"Password & Confirm password not matching");
+        }
+        else
+        onSuccess(conPwd);
     }
 }
 
@@ -42,6 +46,6 @@ function  onError(input,message){
     parent.classlist.remove("success"); 
 }
 
-function isValidEmail(){
-    /^(([^<>[\]\\.,;:\s@"])+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[0-9]{1,3}\.[0.9{1.3}])))
+function isValidEmail(email){
+    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
 }
